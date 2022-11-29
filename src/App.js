@@ -4,34 +4,23 @@ import UserForm from './components/User/UserForm';
 import UserList from './components/User/UserList';
 
 function App() {
-  const [users, setUsers] = useState([
-    {
-      id: 'us1',
-      name: 'Borewicz',
-      age: '25',
-    },
-    {
-      id: 'us2',
-      name: 'Wojtek',
-      age: '25',
-    },
-  ]);
+  const [users, setUsers] = useState([]);
 
-  const Snowflake = {
-    id: Math.random(),
-    name: 'SnowFlake',
-    age: 25,
-  };
+  function newUser(name, age) {
+    const user = {
+      id: Math.random(),
+      name: name,
+      age: age,
+    };
 
-  function addSnowFlake() {
     setUsers((users) => {
-      return [...users, Snowflake];
+      return [...users, user];
     });
   }
 
   return (
     <div>
-      <UserForm addSnowFlake={addSnowFlake} />
+      <UserForm newUser={newUser} />
       <UserList users={users} />
     </div>
   );
