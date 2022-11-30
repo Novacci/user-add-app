@@ -3,9 +3,12 @@ import buttonStyle from './Button.module.css';
 
 const Button = (props) => {
   const addUserHandler = () => {
-    props.newUser(props.name, props.age);
-    props.verifyAgeInput();
-    props.verifyNameInput();
+    const verifyNameInput = props.verifyNameInput();
+    const verifyAgeInput = props.verifyAgeInput();
+
+    if (verifyNameInput && verifyAgeInput) {
+      props.newUser(props.name, props.age);
+    }
   };
 
   return (

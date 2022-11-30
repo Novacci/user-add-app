@@ -37,12 +37,18 @@ const UserForm = (props) => {
   function verifyNameInput() {
     if (name.length === 0) {
       setShowNameModal(true);
+      return false;
+    } else {
+      return true;
     }
   }
 
   function verifyAgeInput() {
-    if (age === 0 || age < 0) {
+    if (age <= 0) {
       setShowAgeModal(true);
+      return false;
+    } else {
+      return true;
     }
   }
 
