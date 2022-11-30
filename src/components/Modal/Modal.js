@@ -1,7 +1,7 @@
 import React from 'react';
 import modalStyle from './Modal.module.css';
 
-const Modal = () => {
+const Modal = (props) => {
   return (
     <div className={modalStyle.backdrop}>
       <div className={modalStyle.modal}>
@@ -12,7 +12,7 @@ const Modal = () => {
           Unfortunetly you have typed wrong value in the Age input.
         </div>
         <div className={modalStyle.actions}>
-          <button>Ok</button>
+          <button onClick={props.modalStop}>Ok</button>
         </div>
       </div>
     </div>
