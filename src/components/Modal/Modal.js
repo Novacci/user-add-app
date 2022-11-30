@@ -8,9 +8,7 @@ const Modal = (props) => {
         <div className={modalStyle.header}>
           <h2>Attiention</h2>
         </div>
-        <div className={modalStyle.content}>
-          Unfortunetly you have typed wrong value in the Age input.
-        </div>
+        <div className={modalStyle.content}>{props.content}</div>
         <div className={modalStyle.actions}>
           <button onClick={props.modalStop}>Ok</button>
         </div>

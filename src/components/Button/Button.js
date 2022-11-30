@@ -4,7 +4,8 @@ import buttonStyle from './Button.module.css';
 const Button = (props) => {
   const addUserHandler = () => {
     props.newUser(props.name, props.age);
-    props.checkModal();
+    props.verifyAgeInput();
+    props.verifyNameInput();
   };
 
   return (

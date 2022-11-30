@@ -6,7 +6,12 @@ import Modal from '../Modal/Modal';
 const UserForm = (props) => {
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
-  const [showModal, setShowModal] = useState(false);
+  const [showAgeModal, setShowAgeModal] = useState(false);
+  const [showNameModal, setShowNameModal] = useState(false);
+
+  const ageContent =
+    'Unfortunetly you have typed wrong value in the Age input.';
+  const nameContent = 'You need to type your name in order to add User';
 
   const nameHandler = (event) => {
     setName(event.target.value);
@@ -22,17 +27,25 @@ const UserForm = (props) => {
     setAge('');
   };
 
-  const modalStop = () => {
-    setShowModal(false);
+  const modalStopAge = () => {
+    setShowAgeModal(false);
+  };
+  const modalStopName = () => {
+    setShowNameModal(false);
   };
 
-  function checkModal() {
-    if (age === 0 || age < 0) {
-      setShowModal(true);
+  function verifyNameInput() {
+    if (name.length === 0) {
+      setShowNameModal(true);
     }
   }
 
-  // jesli age = 0 albo age < 0 to pojawia sie modal
+  function verifyAgeInput() {
+    if (age === 0 || age < 0) {
+      setShowAgeModal(true);
+    }
+  }
+
   return (
     <form onSubmit={submitHandler}>
       <div className={formStyle.card}>
@@ -50,9 +63,16 @@ const UserForm = (props) => {
             newUser={props.newUser}
             age={age}
             name={name}
-            checkModal={checkModal}
+            verifyAgeInput={verifyAgeInput}
+            verifyNameInput={verifyNameInput}
           />
-          {showModal ? <Modal modalStop={modalStop} /> : null}
+
+          {showAgeModal ? (
+            <Modal content={ageContent} modalStop={modalStopAge} />
+          ) : null}
+          {showNameModal ? (
+            <Modal content={nameContent} modalStop={modalStopName} />
+          ) : null}
         </div>
       </div>
     </form>
